@@ -1,0 +1,19 @@
+name: 'Deploy CV Profile'
+on: 
+    push: 
+        branches: 
+            -   master
+jobs: 
+    build:
+        name: Deploy Surge
+        runs-on: ubuntu-latest      
+        steps:
+            -   name: install Node.jsj
+                uses: actions/setup-node@v2-beta
+                with: 
+                    node-version: 12
+                -   name: isntall Surge
+                    run: npm install -g surge
+                -   name: Run Surge
+                    run: surge ./ hussnainjaved.surge.sh --token ${{secrets.SURGE_TOKEN}}
+            
